@@ -35,7 +35,7 @@ RewriteRule ^(/)?$ %{ENV:HTTP_WP_VERSION_FOLDER_NAME}/index.php [L]
 # LAZY LOADING IMAGES
 RewriteCond %{QUERY_STRING} lazy_bg=true
 RewriteCond %{QUERY_STRING} lazy_quality=(.*)
-RewriteRule (.*)(\.jpg|jpeg|png|gif) app/wp-content/taco-app/lib/lazy-images/get-image.php?image_file_path=$1$2&lazy_bg=true&lazy_quality=%1 [L]
+RewriteRule (.*)(\.jpg|jpeg|png|gif) app/wp-content/lazy-images/get-image.php?image_file_path=$1$2&lazy_bg=true&lazy_quality=%1 [L]
 
 
 # DENY ACCESS TO FILES/DIRECTORIES

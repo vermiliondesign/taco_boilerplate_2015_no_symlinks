@@ -3,7 +3,7 @@
 // this file needs FrontendLoader - see composer.json
 // TODO: Put the code below into a class and refactor
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../../../../vendor/autoload.php';
 
 $image_file_path = (array_key_exists('image_file_path', $_GET))
   ? $_GET['image_file_path'] : null;
@@ -21,7 +21,6 @@ if(!file_exists($full_path)) {
   throw new Exception('The file specified does not exist.');
   exit;
 }
-
 if($quality_to_get === 'existing_file') {
   $content_type = \FrontendLoader\FrontendLoader::getContentType($full_path);
   header('Content-type: '.$content_type);
@@ -45,7 +44,7 @@ $qualities_png = array(
 $file_name = basename($full_path);
 $extension = pathinfo($file_name, PATHINFO_EXTENSION);
 $file_name_no_extension = preg_replace("/\.$extension/", '', $file_name);
-$file_path_to_get = __DIR__.'/app/responsive-images/'.$file_name_no_extension.'-'.$quality_to_get.'.'.$extension;
+$file_path_to_get = __DIR__.'/images/'.$file_name_no_extension.'-'.$quality_to_get.'.'.$extension;
 
 if(!file_exists($file_path_to_get)) {
 

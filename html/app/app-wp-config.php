@@ -25,10 +25,10 @@ require_once realpath(__DIR__.'/app-environment.php');
   /** The name of the database for WordPress */
 
   if(ENVIRONMENT === ENVIRONMENT_DEV) {
-    define('DB_USER',     '');
-    define('DB_PASSWORD', '');
-    define('DB_HOST',     '');
-    define('DB_NAME',     '');
+    define('DB_USER',     'root');
+    define('DB_PASSWORD', 'root');
+    define('DB_HOST',     'localhost');
+    define('DB_NAME',     'wptest2');
     define('SAVEQUERIES', true);
   }
   elseif(ENVIRONMENT === ENVIRONMENT_STAGE) {
@@ -77,7 +77,7 @@ define('NONCE_SALT',       '');
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = '';
+$table_prefix  = 'wptest2_';
 
 /**
  * For developers: WordPress debugging mode.
