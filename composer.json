@@ -1,0 +1,11 @@
+{
+  "name": "vermilion/app",
+  "description": "vermilion/app",
+  "license": "proprietary",
+  "minimum-stability": "dev",
+  "require": {
+    "tacowordpress/tacowordpress": "dev-field-type-link",
+    "tacowordpress/addbysearch": "dev-uses-new-frontend-loader",
+    "jasand-pereza/addmany": "dev-master"
+  }
+}
