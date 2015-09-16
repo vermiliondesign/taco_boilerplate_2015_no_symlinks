@@ -12,7 +12,7 @@ This project uses [tacowordpress](https://github.com/tacowordpress/tacowordpress
 ###Setting up the repo locally in terminal:
 
 ##### run composer to get tacowordpress and other vendor requirements
-*```cd``` into the ```/public``` directory
+*```cd``` into the ```/html``` directory
 *run ```composer install```
 
 ##### setup localhost to point to ```html```
