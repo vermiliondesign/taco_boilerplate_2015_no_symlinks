@@ -165,3 +165,43 @@ function get_app_icons() {
   $paths[] = '<link rel="icon" href="/app/wp-content/app-icons/favicon.ico">';
   return join('', $paths);
 }
+
+// admin lockdown
+add_action('init', function() {
+  if(!is_admin()) return;
+  if(wp_get_current_user()->data->user_login === USER_SUPER_ADMIN) return;
+  $array_of_regex_restricted_admin_pages = array(
+    '/plugins\.php/',
+    '/edit-comments\.php/',
+    '/tools.php/',
+    '/options-general\.php/',
+    '/themes\.php/',
+    '/users\.php/'
+  );
+  foreach($array_of_regex_restricted_admin_pages as $p) {
+    if(preg_match($p, $_SERVER['SCRIPT_NAME'])) {
+      header('Location: /wp-admin/');
+    }
+  }
+});
+
+// get rid of admin pages we don't need for non admin users
+add_action('admin_menu', 'remove_non_vermilion_admin_menu_items', 999);
+function remove_non_vermilion_admin_menu_items() {
+ if(wp_get_current_user()->data->user_login != USER_SUPER_ADMIN) {
+   remove_menu_page('plugins.php');
+   remove_menu_page('edit-comments.php');
+   remove_menu_page('tools.php');
+   remove_menu_page('options-general.php');
+   remove_menu_page('themes.php');
+   remove_menu_page('users.php');
+   remove_action('admin_notices', 'update_nag', 3);
+ }
+}
+// Because we removed appearance and its sub menus, we need to re-enable menus here
+add_action('admin_menu', 'add_non_vermilion_admin_menu_items', 999);
+function add_non_vermilion_admin_menu_items() {
+  if(wp_get_current_user()->data->user_login != USER_SUPER_ADMIN) {
+   add_menu_page( 'Menus', 'Menus', 'manage_options', 'nav-menus.php', '', null, 6);
+  }
+}
