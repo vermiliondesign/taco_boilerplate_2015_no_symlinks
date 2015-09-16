@@ -41,6 +41,7 @@ This project uses [tacowordpress](https://github.com/tacowordpress/tacowordpress
     * app-environment.php
     * app-wp-config.php
     * wp-content
+      * uploads (ignored in git)
       * app-icons
       * plugins
       * taco-app
