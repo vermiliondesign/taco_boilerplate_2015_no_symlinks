@@ -1,0 +1,81 @@
+RewriteEngine on
+
+
+# CUSTOM SERVER VARS
+
+# You must use 'HTTP_' as prefix when setting custom vars.
+# This a security check on media temple servers
+RewriteRule ^ - [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-4.2.2]
+
+RewriteCond %{SERVER_NAME} \.dev
+RewriteRule ^ - [E=HTTP_APP_ENVIRONMENT:dev]
+
+RewriteCond %{SERVER_NAME} (\.vermilion\.com)
+RewriteRule ^ - [E=HTTP_APP_ENVIRONMENT:staging]
+
+RewriteCond %{SERVER_NAME} (\.com|\.org|\.edu)
+RewriteRule ^ - [E=HTTP_APP_ENVIRONMENT:prod]
+
+
+# WP REWRITES/REDIRECTS
+
+RewriteRule ^wp-content(.*) /app/wp-content$1 [L]
+RewriteRule ^wp-includes(.*) /%{ENV:HTTP_WP_VERSION_FOLDER_NAME}/wp-includes$1 [L,QSA]
+
+RewriteRule ^wp-admin(.*) %{ENV:HTTP_WP_VERSION_FOLDER_NAME}/wp-admin$1 [L,QSA]
+RewriteRule ^wp-login\.php$ /%{ENV:HTTP_WP_VERSION_FOLDER_NAME}/wp-login.php$1 [L,QSA]
+
+RewriteRule ^%{ENV:HTTP_WP_VERSION_FOLDER_NAME}/index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . %{ENV:HTTP_WP_VERSION_FOLDER_NAME}/index.php [L]
+
+RewriteRule ^(/)?$ %{ENV:HTTP_WP_VERSION_FOLDER_NAME}/index.php [L]
+
+# LAZY LOADING IMAGES
+RewriteCond %{QUERY_STRING} lazy_bg=true
+RewriteCond %{QUERY_STRING} lazy_quality=(.*)
+RewriteRule (.*)(\.jpg|jpeg|png|gif) app/wp-content/taco-app/lib/lazy-images/get-image.php?image_file_path=$1$2&lazy_bg=true&lazy_quality=%1 [L]
+
+
+# DENY ACCESS TO FILES/DIRECTORIES
+
+# If you are going to forbid access to a directory, do something like the below (commented out).
+#RewriteRule ^folder_name(.*) - [F,L,NC]
+
+# forbid access to certain files by name
+<FilesMatch "(README\.md|\.git\|\.gitignore)">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+
+# OPTIMIZATION
+<IfModule mod_headers.c>
+  Header unset ETag
+  FileETag none
+</IfModule>
+
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+<ifModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType text/x-javascript "access plus 1 month"
+  ExpiresByType application/x-shockwave-flash "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresDefault "access plus 2 days"
+</ifModule>
