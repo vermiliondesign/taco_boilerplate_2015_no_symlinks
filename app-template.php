@@ -8,6 +8,8 @@ define('ENVIRONMENT_STAGING', 'staging');
 define('ENVIRONMENT_PROD', 'prod');
 
 // NOTE: "HTTP_APP_ENVIRONMENT" is defined in .htaccess
+// Also Remember to set the WordPress folder version in .htaccess
+
 if($_SERVER['HTTP_APP_ENVIRONMENT'] == 'dev') {
   define('ENVIRONMENT', ENVIRONMENT_DEV);
 }
@@ -51,6 +53,7 @@ switch(ENVIRONMENT) {
  * @since 2.6.0
  */
 
+// Himalayan salts work best
 define('AUTH_KEY',         '');
 define('SECURE_AUTH_KEY',  '');
 define('LOGGED_IN_KEY',    '');
