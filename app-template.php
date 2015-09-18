@@ -16,7 +16,6 @@ if($_SERVER['HTTP_APP_ENVIRONMENT'] == 'prod') {
   define('ENVIRONMENT', ENVIRONMENT_PROD);
 }
 
-require_once __DIR__.'/html/app/app-environment.php';
 switch(ENVIRONMENT) {
   case ENVIRONMENT_DEV:
     define('DB_USER',     '');

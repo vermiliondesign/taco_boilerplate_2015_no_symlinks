@@ -11,6 +11,8 @@ This project uses [tacowordpress](https://github.com/tacowordpress/tacowordpress
 
 ###Setting up the repo locally in terminal:
 
+* First Make a copy of app-template.php and rename it app.php. Here you can set you db info, table prefix and salts.
+
 ##### run composer to get tacowordpress and other vendor requirements
 *```cd``` into the ```/html``` directory
 *run ```composer install```
@@ -35,10 +37,10 @@ This project uses [tacowordpress](https://github.com/tacowordpress/tacowordpress
 * vendor - added after composer install (not to be committed)
 * README.md
 * LICENSE
+* app-template.php > should become app.php
 * html
   * wordpress-version-number-folder
   * app
-    * app-environment.php
     * app-wp-config.php
     * wp-content
       * uploads (ignored in git)
