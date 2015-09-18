@@ -22,15 +22,13 @@ This project uses [tacowordpress](https://github.com/tacowordpress/tacowordpress
 ### Setting up WordPress locally:
 
 * create an empty database
-* update the ```/html/app/wp-app-config.php``` table_prefix and salts
-* update the db.php (not committed through .git) with db creds
-* go to your localhost url, setup to run the project
+* update the ```/app.php``` table_prefix and salts
+* update the app.php (not committed through .git) with db creds
 * edit ```RewriteRule ^ - [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-4.2.2]``` to reflect the version of WordPress the setup is using. Anytime WordPress gets upgraded, change this too.
 * IMPORTANT: go here for the WordPress install [yoursite.com]/wp-admin/install.php
   * If you don't, you will see the WordPress version folder in the path and it will mess up your install.
 * run the wp install
-* once logged into the dashboard, first activate the theme
-* next, activate taco_app, then taco_theme_options
+* once logged into the dashboard, activate the theme
 
 ### Directory Structure
 * assets
