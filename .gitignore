@@ -20,3 +20,8 @@ Thumbs.db
 *.exe
 *.o
 *.so
+
+.codekit-cache
+*.css.map
+*.js.map
+/app.php

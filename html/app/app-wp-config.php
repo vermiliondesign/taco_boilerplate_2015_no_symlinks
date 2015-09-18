@@ -4,7 +4,7 @@
 require_once realpath(__DIR__.'/../../vendor/autoload.php');
 
 // Added by Vermilion
-require_once realpath(__DIR__.'/app-environment.php');
+require_once realpath(__DIR__.'/../../app.php');
 
 /**
  * The base configurations of the WordPress.
@@ -22,62 +22,15 @@ require_once realpath(__DIR__.'/app-environment.php');
  */
 
 // ** MySQL settings - You can get this info from your web host ** //
-  /** The name of the database for WordPress */
+ /** The name of the database for WordPress */
 
-  if(ENVIRONMENT === ENVIRONMENT_DEV) {
-    define('DB_USER',     'root');
-    define('DB_PASSWORD', 'root');
-    define('DB_HOST',     'localhost');
-    define('DB_NAME',     'wptest2');
-    define('SAVEQUERIES', true);
-  }
-  elseif(ENVIRONMENT === ENVIRONMENT_STAGE) {
-    define('DB_USER',     '');
-    define('DB_PASSWORD', '');
-    define('DB_HOST',     '');
-    define('DB_NAME',     '');
-    define('SAVEQUERIES', true);
-  }
-  else {
-    define('DB_USER',     '');
-    define('DB_PASSWORD', '');
-    define('DB_HOST',     '');
-    define('DB_NAME',     '');
-  }
 
-  /** Database Charset to use in creating database tables. */
-  define('DB_CHARSET', 'utf8');
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
 
-  /** The Database Collate type. Don't change this if in doubt. */
-  define('DB_COLLATE', '');
+/** The Database Collate type. Don't change this if in doubt. */
+define('DB_COLLATE', '');
 
-/**#@+
- * Authentication Unique Keys and Salts.
- *
- * Change these to different unique phrases!
- * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
- * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
- *
- * @since 2.6.0
- */
-
-define('AUTH_KEY',         '');
-define('SECURE_AUTH_KEY',  '');
-define('LOGGED_IN_KEY',    '');
-define('NONCE_KEY',        '');
-define('AUTH_SALT',        '');
-define('SECURE_AUTH_SALT', '');
-define('LOGGED_IN_SALT',   '');
-define('NONCE_SALT',       '');
-/**#@-*/
-
-/**
- * WordPress Database Table prefix.
- *
- * You can have multiple installations in one database if you give each a unique
- * prefix. Only numbers, letters, and underscores please!
- */
-$table_prefix  = 'wptest2_';
 
 /**
  * For developers: WordPress debugging mode.
