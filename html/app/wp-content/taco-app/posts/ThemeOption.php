@@ -8,8 +8,8 @@ class ThemeOption extends \Taco\Post {
   
   public function getFields() {
     return array_merge(self::getBaseFields(), array(
-      'social_facebook'=>array('type'=>'text', 'label'=>'Facebook', 'default'=>'ReadingPartners.org'),
-      'social_twitter'=>array('type'=>'text', 'label'=>'Twitter', 'default'=>'readingpartners'),
+      'social_facebook'=>array('type'=>'link', 'label'=>'Facebook', 'default'=>'ReadingPartners.org'),
+      'social_twitter'=>array('type'=>'link', 'label'=>'Twitter', 'default'=>'readingpartners'),
       
       'contact_street'=>array('type'=>'text', 'label'=>'Street', 'default'=>''),
       'contact_city'=>array('type'=>'text', 'label'=>'City', 'default'=>''),
@@ -47,7 +47,7 @@ class ThemeOption extends \Taco\Post {
    * Which core fields does this support?
    */
   public function getSupports() {
-    return array('title');
+    return array('title', 'editor');
   }
   
   
