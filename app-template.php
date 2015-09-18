@@ -1,5 +1,7 @@
 <?php
-// NOTE: Copy this file and make it app.php
+// NOTE: Copy this file and make it app.php.
+// Make sure to remove this comment in the copied version
+// so you don't do it recursivley.
 
 define('ENVIRONMENT_DEV', 'dev');
 define('ENVIRONMENT_STAGING', 'staging');
