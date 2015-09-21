@@ -77,6 +77,14 @@ This project uses [tacowordpress](https://github.com/tacowordpress/tacowordpress
 * FTP or setup composer on production server to get the /vendor directory deployed
 * FTP uploads
 
+### Upgrading WordPress
+* Download, unzip, and rename "wordpress" to "wordpress-[version-number]"
+* Move the new wordpress folder to where the current version resides
+* Delete the "wp-content" folder in the new version of WordPress
+* Copy the contents out of /[current-wordpress-version-folder]/wp-config.php and paste it in the new version's wp-config.php
+* Open ".htaccess" in the "html" folder and change the version number [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-4.2.2] in the rewrite
+
+
 ### More Documentation
 * The theme is setup to have more documentation, seen when logged into WP, under ```/docs```
 * The theme is setup with a Sample Page for general wysiwyg and content entry, seen when logged into WP, under ```/sample-page```
