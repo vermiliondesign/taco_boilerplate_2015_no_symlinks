@@ -7,14 +7,15 @@ RewriteEngine on
 # This a security check on media temple servers
 RewriteRule ^ - [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-4.2.2]
 
-RewriteCond %{SERVER_NAME} \.dev
-RewriteRule ^ - [E=HTTP_APP_ENVIRONMENT:dev]
+# IMPORTANT: Do not change the order of the 3 rewrites below
+RewriteCond %{SERVER_NAME} !vermilion\.com
+RewriteRule ^ - [E=HTTP_APP_ENVIRONMENT:prod]
 
 RewriteCond %{SERVER_NAME} (\.vermilion\.com)
 RewriteRule ^ - [E=HTTP_APP_ENVIRONMENT:staging]
 
-RewriteCond %{SERVER_NAME} (\.com|\.org|\.edu)
-RewriteRule ^ - [E=HTTP_APP_ENVIRONMENT:prod]
+RewriteCond %{SERVER_NAME} \.dev
+RewriteRule ^ - [E=HTTP_APP_ENVIRONMENT:dev]
 
 
 # WP REWRITES/REDIRECTS
