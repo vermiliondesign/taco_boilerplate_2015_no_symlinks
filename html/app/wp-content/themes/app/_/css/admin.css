@@ -1,0 +1,5 @@
+#dashboard-widgets-wrap a[href*="options-reading.php"]  {
+  background-color: red;
+  color: #FFF;
+  padding: 2px;
+}

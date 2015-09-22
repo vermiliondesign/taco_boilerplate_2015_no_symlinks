@@ -205,3 +205,11 @@ function add_non_vermilion_admin_menu_items() {
    add_menu_page( 'Menus', 'Menus', 'manage_options', 'nav-menus.php', '', null, 6);
   }
 }
+
+// add admin.css for various things
+add_action('admin_enqueue_scripts', function() {
+  wp_enqueue_style(
+    'custom-admin-styles',
+    get_template_directory_uri() . '/_/css/admin.css'
+  );
+});
