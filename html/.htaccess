@@ -5,7 +5,7 @@ RewriteEngine on
 
 # You must use 'HTTP_' as prefix when setting custom vars.
 # This a security check on media temple servers
-RewriteRule ^ - [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-4.2.2]
+RewriteRule ^ - [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-4.x.x]
 
 # IMPORTANT: Do not change the order of the 3 rewrites below
 RewriteCond %{SERVER_NAME} !vermilion\.com
