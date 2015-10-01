@@ -10,13 +10,13 @@ define('ENVIRONMENT_PROD', 'prod');
 // NOTE: "HTTP_APP_ENVIRONMENT" is defined in .htaccess
 // Also Remember to set the WordPress folder version in .htaccess
 
-if($_SERVER['HTTP_APP_ENVIRONMENT'] == 'dev') {
+if($_SERVER['HTTP_APP_ENVIRONMENT'] == 'dev' || $_SERVER['REDIRECT_HTTP_APP_ENVIRONMENT'] == 'dev' ) {
   define('ENVIRONMENT', ENVIRONMENT_DEV);
 }
-if($_SERVER['HTTP_APP_ENVIRONMENT'] == 'staging') {
+if($_SERVER['HTTP_APP_ENVIRONMENT'] == 'staging' || $_SERVER['REDIRECT_HTTP_APP_ENVIRONMENT'] == 'staging') {
   define('ENVIRONMENT', ENVIRONMENT_STAGING);
 }
-if($_SERVER['HTTP_APP_ENVIRONMENT'] == 'prod') {
+if($_SERVER['HTTP_APP_ENVIRONMENT'] == 'prod' || $_SERVER['REDIRECT_HTTP_APP_ENVIRONMENT'] == 'prod') {
   define('ENVIRONMENT', ENVIRONMENT_PROD);
 }
 
