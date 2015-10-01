@@ -1,5 +1,9 @@
+/app.php
 /html/app/wp-content/uploads/
+/html/wordpress-*/wp-content/
+/html/wordpress-*/wp-config-sample.php
 vendor
+
 *.log
 *.zip
 *.tar
@@ -24,4 +28,3 @@ Thumbs.db
 .codekit-cache
 *.css.map
 *.js.map
-/app.php
