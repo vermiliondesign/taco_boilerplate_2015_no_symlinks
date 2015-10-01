@@ -43,6 +43,14 @@ switch(ENVIRONMENT) {
     break;
 }
 
+/**
+ * WordPress Database Table prefix.
+ *
+ * You can have multiple installations in one database if you give each a unique
+ * prefix. Only numbers, letters, and underscores please!
+ */
+$table_prefix  = '';
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -63,11 +71,3 @@ define('SECURE_AUTH_SALT', '');
 define('LOGGED_IN_SALT',   '');
 define('NONCE_SALT',       '');
 /**#@-*/
-
-/**
- * WordPress Database Table prefix.
- *
- * You can have multiple installations in one database if you give each a unique
- * prefix. Only numbers, letters, and underscores please!
- */
-$table_prefix  = '';
