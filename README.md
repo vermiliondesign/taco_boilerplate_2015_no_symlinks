@@ -24,7 +24,7 @@ This project uses [tacowordpress](https://github.com/tacowordpress/tacowordpress
 * create an empty database
 * update the ```/app.php``` table_prefix and salts
 * update the app.php (not committed through .git) with db creds
-* edit ```RewriteRule ^ - [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-4.2.2]``` to reflect the version of WordPress the setup is using. Anytime WordPress gets upgraded, change this too.
+* edit ```RewriteRule ^ - [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-x.x.x]``` to reflect the version of WordPress the setup is using. Anytime WordPress gets upgraded, change this too.
 * IMPORTANT: go here for the WordPress install [yoursite.com]/wp-admin/install.php
   * If you don't, you will see the WordPress version folder in the path and it will mess up your install.
 * run the wp install
@@ -39,7 +39,8 @@ This project uses [tacowordpress](https://github.com/tacowordpress/tacowordpress
 * LICENSE
 * app-template.php > should become app.php
 * html
-  * wordpress-version-number-folder
+  * wordpress-x.x.x (folder)
+  * wp-config.php (Make sure to move this into [wordpress-x.x.x])
   * app
     * app-wp-config.php
     * wp-content
@@ -75,14 +76,16 @@ This project uses [tacowordpress](https://github.com/tacowordpress/tacowordpress
 
 * deploy files under version control
 * FTP or setup composer on production server to get the /vendor directory deployed
+  * [See this link for an example](https://forum.mediatemple.net/topic/6927-here-is-how-to-install-and-use-composer/)
 * FTP uploads
 
 ### Upgrading WordPress
-* Download, unzip, and rename "wordpress" to "wordpress-[version-number]"
+* Download, unzip, and rename "wordpress" to "wordpress-x.x.x"
 * Move the new wordpress folder to where the current version resides
 * Delete the "wp-content" folder in the new version of WordPress
-* Copy the contents out of /[current-wordpress-version-folder]/wp-config.php and paste it in the new version's wp-config.php
-* Open ".htaccess" in the "html" folder and change the version number [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-4.2.2] in the rewrite
+* Create a new wp-config.php in html/[new-wordpress-x.x.x]
+* Copy the contents out of html/[current-wordpress-x.x.x]/wp-config.php and paste it in the new version's wp-config.php
+* Open ".htaccess" in the "html" folder and change the version number [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-x.x.x] in the rewrite
 
 
 ### More Documentation
