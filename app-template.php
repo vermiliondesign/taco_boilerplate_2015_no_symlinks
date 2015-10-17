@@ -49,7 +49,7 @@ switch(ENVIRONMENT) {
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = '';
+$table_prefix  = 'prefix_wp_';
 
 /**#@+
  * Authentication Unique Keys and Salts.
