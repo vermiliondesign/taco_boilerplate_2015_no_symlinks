@@ -155,4 +155,4 @@ class ThemeOption extends \Taco\Post {
 }
 
 // Make sure a record exists
-add_action('plugins_loaded', 'ThemeOption::createDefaultInstanceIfNecessary');
+add_action('wp_loaded', 'ThemeOption::createDefaultInstanceIfNecessary');

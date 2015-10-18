@@ -139,4 +139,4 @@ class ThemeOptBase extends \Taco\Post {
 }
 
 // Make sure a record exists
-add_action('plugins_loaded', 'ThemeOptBase::createDefaultInstanceIfNecessary');
+add_action('wp_loaded', 'ThemeOptBase::createDefaultInstanceIfNecessary');
