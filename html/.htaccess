@@ -51,7 +51,7 @@ RewriteRule (.*)(\.jpg|jpeg|png|gif) app/wp-content/lazy-images/get-image.php?im
 #RewriteRule ^folder_name(.*) - [F,L,NC]
 
 # forbid access to certain files by name
-<FilesMatch "(README\.md|\.git\|\.gitignore)">
+<FilesMatch "(\.md|\.git\|\.gitignore|\.sql|\.sql.gz)">
   Order Allow,Deny
   Deny from all
 </FilesMatch>
