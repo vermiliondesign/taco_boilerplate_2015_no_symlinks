@@ -56,7 +56,6 @@ RewriteRule (.*)(\.jpg|jpeg|png|gif) app/wp-content/lazy-images/get-image.php?im
   Deny from all
 </FilesMatch>
 
-
 # OPTIMIZATION
 <IfModule mod_headers.c>
   Header unset ETag
