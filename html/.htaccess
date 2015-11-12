@@ -1,5 +1,7 @@
-RewriteEngine on
+# fail-safe in case the conf file doesn't have it
+Options -Indexes
 
+RewriteEngine on
 
 # CUSTOM SERVER VARS
 
