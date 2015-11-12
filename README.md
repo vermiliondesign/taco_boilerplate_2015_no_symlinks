@@ -12,10 +12,11 @@ This project uses [tacowordpress](https://github.com/tacowordpress/tacowordpress
 ### Getting started
 1. Download a fresh copy of this repository
 2. Rename `app-template.php` to `app.php`
-3. In `app.php`, set database connection info, table prefix, and salts
-
+3. In `app.php`:
+  * Set $table_prefix
+  * Add salts
+  * Add DB credentials
 *Note: `app.php` is in `.gitignore`, and should not be added to source control.*
-
 
 ### Installing dependencies through Composer
 1. `cd` into the `html` directory
