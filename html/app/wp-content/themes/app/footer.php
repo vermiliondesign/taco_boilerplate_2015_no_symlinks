@@ -1,11 +1,10 @@
-</div>
-<!--/.page-wrap -->
-something needed in the footer?
+  </main>
 
-
-
+  <footer class="footer" role="contentinfo">
+    <p>Taco Footer</p>
+  </footer>
+</div><!--/.page-wrap -->
 <?php wp_footer(); ?>
-
 <script>
   //$(document).foundation();
 </script>

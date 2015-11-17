@@ -1,9 +1,68 @@
+@mixin upper($val) {
+  text-transform: uppercase;
+  letter-spacing: r($val);
+}
+@mixin transit($vals...) {
+  -webkit-transition: $vals;
+  transition: $vals;
+}
+@mixin gradient_overlay_setup {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  display: block;
+}
+@mixin gradient_overlay($color, $alpha_start, $alpha_end, $origin, $size) {
+  $color_start: null;
+  $color_end: null;
+  $opposite: null;
+
+  @if $origin == left or $origin == right {
+    #{$origin}: 0;
+    top: 0;
+    width: $size;
+    height: 100%;
+  } @else {
+    left: 0;
+    #{$origin}: 0;
+    width: 100%;
+    height: $size;
+  }
+
+  $color_start: transparentize($color, (1 - $alpha_start));
+  $color_end: transparentize($color, (1 - $alpha_end));
+
+  @if $origin == left {
+    $opposite: right;
+  } @else if $origin == right {
+    $opposite: left;
+  } @else if $origin == top {
+    $opposite: bottom;
+  } @else if $origin == bottom {
+    $opposite: top;
+  }
+
+  background: -moz-linear-gradient($origin, $color_start 0%, $color_end 100%);
+  background: -webkit-linear-gradient($origin, $color_start 0%, $color_end 100%);
+  background: linear-gradient(to $opposite, $color_start 0%, $color_end 100%);
+}
+
+
+@mixin linear_gradient($top, $bottom) {
+  background: $top;
+  background: -moz-linear-gradient(top, $top 0%, $bottom 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom));
+  background: -webkit-linear-gradient(top, $top 0%,$bottom 100%);
+  background: -o-linear-gradient(top, $top 0%,$bottom 100%);
+  background: -ms-linear-gradient(top, $top 0%,$bottom 100%);
+  background: linear-gradient(to bottom, $top 0%,$bottom 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top', endColorstr='$bottom',GradientType=0 ); //TODO: Check in IE9
+}
 @mixin border_radius($value) {
   -webkit-border-radius: $value;
   -moz-border-radius: $value;
   border-radius: $value;
 }
-
 // good for vertical align middling
 @mixin translate($value) {
   -webkit-transform: $value;
@@ -19,47 +78,87 @@
   -o-transition: $value;
   transition: $value;
 }
-
 @mixin transform($value) {
   -webkit-transform: $value;
   -moz-transform: $value;
   -o-transform: $value;
 }
-
 @mixin delay($value) {
   -webkit-transition-delay: $value;
   -moz-transition-delay: $value;
   -o-transition-delay: $value;
   transition-delay: $value;
 }
-
 @mixin box_shadow($value) {
   -moz-box-shadow: $value;
   -webkit-box-shadow: $value;
   box-shadow: $value;
 }
-
-@mixin cube_grow_bottom_left($left, $top) {
-  box-shadow:
--1px 0px 1px $left,
-0px 1px 1px $top,
--2px 1px 1px $left,
--1px 2px 1px $top,
--3px 2px 1px $left,
--2px 3px 1px $top,
--4px 3px 1px $left,
--3px 4px 1px $top,
--5px 4px 1px $left,
--4px 5px 1px $top,
--6px 5px 1px $left,
--5px 6px 1px $top,
--7px 6px 1px $left,
--6px 7px 1px $top,
--8px 7px 1px $left,
--7px 8px 1px $top,
--9px 8px 1px $left,
--8px 9px 1px $top,
--10px 9px 1px $left,
--9px 10px 1px $top;
+@mixin clearfix() {
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
-
+@mixin img_replace() {
+  text-indent: 110%;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@mixin visually_hidden() {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+@mixin plain_list($margin_left:0, $padding_left:0) {
+  & {
+    margin-left: $margin_left;
+    padding-left: $padding_left;
+  }
+  & li {
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: none;
+  }
+}
+@mixin horiz_list($margin_left:0, $padding_left:0, $width:100%) {
+  @include plain_list($margin_left, $padding_left);
+  & {
+    width: $width;
+    @include clearfix();
+    li {
+      float: left;
+      a {
+        display: block;
+      }
+    }
+  }
+}
+@mixin disable_selection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@mixin self_placeholder {
+  &::-webkit-input-placeholder { @content }
+  &::-moz-placeholder          { @content }
+  &:-moz-placeholder           { @content }
+  &:-ms-input-placeholder      { @content }
+}
+@mixin form_element_appearance($value:none) {
+  -webkit-appearance: $value;
+  -moz-appearance:    $value;
+  appearance:         $value;
+}

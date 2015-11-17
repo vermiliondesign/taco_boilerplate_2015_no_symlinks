@@ -1,6 +1,62 @@
 body {
   background: yellow; }
 
+.table {
+  display: table; }
+  .table .cell {
+    display: table-cell; }
+
+.center {
+  text-align: center; }
+
+div:not(.content) > ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+figure {
+  margin: 0;
+  padding: 0;
+  display: inline-block; }
+
+img.alignleft {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px; }
+
+img.alignright {
+  float: right;
+  margin-left: 15px;
+  margin-bottom: 15px; }
+
+img.aligncenter {
+  display: block;
+  margin: 0 auto; }
+
+img.aligncenter:after {
+  clear: both; }
+
+.gallery-caption {
+  padding: 0 20px;
+  font-size: 1.1rem;
+  font-weight: 700; }
+
+.wp-caption {
+  max-width: 100% !important; }
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+footer.footer {
+  border-top: 1px solid #000; }
+
 /*
 * Breakpoints Details as seen on mobile.scss, menu.scss, homepage.scss, header.scss
 * min-width: 1115
