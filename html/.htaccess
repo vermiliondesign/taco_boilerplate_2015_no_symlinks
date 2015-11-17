@@ -1,5 +1,7 @@
-RewriteEngine on
+# fail-safe in case the conf file doesn't have it
+Options All -Indexes
 
+RewriteEngine on
 
 # CUSTOM SERVER VARS
 
@@ -49,11 +51,10 @@ RewriteRule (.*)(\.jpg|jpeg|png|gif) app/wp-content/lazy-images/get-image.php?im
 #RewriteRule ^folder_name(.*) - [F,L,NC]
 
 # forbid access to certain files by name
-<FilesMatch "(README\.md|\.git\|\.gitignore)">
+<FilesMatch "(\.md|\.git\|\.gitignore|\.sql|\.sql.gz)">
   Order Allow,Deny
   Deny from all
 </FilesMatch>
-
 
 # OPTIMIZATION
 <IfModule mod_headers.c>
