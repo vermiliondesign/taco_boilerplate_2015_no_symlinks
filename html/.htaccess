@@ -5,7 +5,7 @@ RewriteEngine on
 
 # You must use 'HTTP_' as prefix when setting custom vars.
 # This a security check on media temple servers
-RewriteRule ^ - [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-4.x.x]
+RewriteRule ^ - [E=HTTP_WP_VERSION_FOLDER_NAME:wordpress-4.3.1]
 # fail-safe for apache redirects
 SetEnvIf REDIRECT_HTTP_WP_VERSION_FOLDER_NAME (.+) HTTP_WP_VERSION_FOLDER_NAME=$1
 
