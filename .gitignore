@@ -1,5 +1,10 @@
 /html/app/wp-content/uploads/
-vendor
+# ignore composer dir
+
+html/vendor/**
+# dont ignore seo-wordpress vendor
+!html/app/wp-content/plugins/wordpress-seo/vendor/
+
 *.log
 *.zip
 *.tar
