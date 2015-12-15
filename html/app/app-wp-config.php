@@ -1,7 +1,7 @@
 <?php
 // Composer autoloader
 // Added by Vermilion
-require_once realpath(__DIR__.'/../vendor/autoload.php');
+require_once __DIR__.'/../../vendor/autoload.php';
 
 // Added by Vermilion
 require_once realpath(__DIR__.'/../../app.php');
