@@ -2,10 +2,6 @@
   text-transform: uppercase;
   letter-spacing: r($val);
 }
-@mixin transit($vals...) {
-  -webkit-transition: $vals;
-  transition: $vals;
-}
 @mixin gradient_overlay_setup {
   content: '';
   position: absolute;
@@ -58,11 +54,6 @@
   background: linear-gradient(to bottom, $top 0%,$bottom 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top', endColorstr='$bottom',GradientType=0 ); //TODO: Check in IE9
 }
-@mixin border_radius($value) {
-  -webkit-border-radius: $value;
-  -moz-border-radius: $value;
-  border-radius: $value;
-}
 // good for vertical align middling
 @mixin translate($value) {
   -webkit-transform: $value;
@@ -71,17 +62,9 @@
   -o-transform: $value;
   transform: $value;
 }
-@mixin tranzish($value) {
-  -webkit-transition: $value;
-  -moz-transition: $value;
-  -ms-transition: $value;
-  -o-transition: $value;
-  transition: $value;
-}
 @mixin transform($value) {
   -webkit-transform: $value;
-  -moz-transform: $value;
-  -o-transform: $value;
+  transform: $value;
 }
 @mixin delay($value) {
   -webkit-transition-delay: $value;
@@ -89,12 +72,7 @@
   -o-transition-delay: $value;
   transition-delay: $value;
 }
-@mixin box_shadow($value) {
-  -moz-box-shadow: $value;
-  -webkit-box-shadow: $value;
-  box-shadow: $value;
-}
-@mixin clearfix() {
+@mixin clearfix {
   &:before, &:after {
     content: " ";
     display: table;
@@ -103,13 +81,13 @@
     clear: both;
   }
 }
-@mixin img_replace() {
+@mixin img_replace {
   text-indent: 110%;
   display: block;
   overflow: hidden;
   white-space: nowrap;
 }
-@mixin visually_hidden() {
+@mixin visually_hidden {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
