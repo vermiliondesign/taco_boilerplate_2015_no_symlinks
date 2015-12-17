@@ -1,4 +1,4 @@
-@mixin upper($val) {
+@mixin upper($val: 0.05em) {
   text-transform: uppercase;
   letter-spacing: r($val);
 }
