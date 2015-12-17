@@ -73,11 +73,9 @@
   transition-delay: $value;
 }
 @mixin clearfix {
-  &:before, &:after {
-    content: " ";
-    display: table;
-  }
   &:after {
+    content: '';
+    display: table;
     clear: both;
   }
 }
