@@ -26,6 +26,12 @@ SetEnvIf REDIRECT_HTTP_APP_ENVIRONMENT (.+) HTTP_APP_ENVIRONMENT=$1
 
 # WP REWRITES/REDIRECTS
 
+RewriteRule ^xmlrpc\.php(.*) %{ENV:HTTP_WP_VERSION_FOLDER_NAME}/xmlrpc.php$1 [L,QSA]
+RewriteRule ^wp-cron\.php(.*) %{ENV:HTTP_WP_VERSION_FOLDER_NAME}/wp-cron.php$1 [L,QSA]
+RewriteRule ^wp\-trackback\.php(.*) %{ENV:HTTP_WP_VERSION_FOLDER_NAME}/wp-trackback.php$1 [L,QSA]
+RewriteRule ^wp\-comments\-post\.php(.*) %{ENV:HTTP_WP_VERSION_FOLDER_NAME}/wp-comments-post.php$1 [L,QSA]
+RewriteRule ^wp\-mail\.php(.*) %{ENV:HTTP_WP_VERSION_FOLDER_NAME}/wp-mail.php$1 [L,QSA]
+
 RewriteRule ^wp-content(.*) /app/wp-content$1 [L]
 RewriteRule ^wp-includes(.*) /%{ENV:HTTP_WP_VERSION_FOLDER_NAME}/wp-includes$1 [L,QSA]
 
